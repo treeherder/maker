@@ -4,9 +4,6 @@ board = "Uno"
 monitor_port = "/dev/tty.usb*"
 
 class Maker():
-  def create_make(self):
-    call(["touch", "Makefile"])
-
   def write_make(self):
     f = open("Makefile", 'a+')
     f.writelines("include ./Applications/Arduino.app/Contents/Resources/Java/arduino-mk/Arduino.mk\r\n")
@@ -30,7 +27,6 @@ class Maker():
       print("failure to write port")
 
 maker = Maker()
-maker.create_make()
 maker.write_make()
 
 ''' i need a way to set these paths in bash, i think
