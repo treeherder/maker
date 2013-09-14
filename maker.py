@@ -1,24 +1,35 @@
 from subprocess import call
 import time
 includes = ["SoftwareSerial", "Wire", "Servo", "/some/other/path/Library.h"]
+board = "Uno"
+monitor_port = "/dev/tty.usb*"
+
 class Maker():
   def create_make(self):
     call(["touch", "Makefile"])
-  f = open("Makefile", 'a+')
-  f.write("include .**I DONT UNDERSTAND MAC PKG***/arduino-mk/Arduino.mk\r\n")
-  f.close() 
+
   def write_make(self):
+    f = open("Makefile", 'a+')
+    f.writelines("include .**I DONT UNDERSTAND MAC PKG***/arduino-mk/Arduino.mk\r\n")
+    f.writelines("BOARD = {0}\r\n".format(board))
+    f.close() 
     try:
       f = open("Makefile", "a+")
-      f.write("ARDUINO_LIBS = ")
+      f.writelines("ARDUINO_LIBS = ")
       f.close()
       for include in includes:
         f = open("Makefile", 'a+')
-        f.write(" {0}".format(include))
+        f.writelines(" {0}".format(include))
         f.close()
     except:
-      print ("failure to write")
+      print ("failure to write libs")
+    try:
+      f = open("Makefile", "a+")
+      f.writelines("\nMONITOR_PORT= {0}".format(monitor_port))
+      f.close()
+    except:
+      print("failure to write port")
+
 maker = Maker()
 maker.create_make()
 maker.write_make()
-time.sleep(1)
