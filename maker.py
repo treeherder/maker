@@ -1,5 +1,4 @@
 from subprocess import call
-import time
 includes = ["SoftwareSerial", "Wire", "Servo", "/some/other/path/Library.h"]
 board = "Uno"
 monitor_port = "/dev/tty.usb*"
@@ -10,7 +9,7 @@ class Maker():
 
   def write_make(self):
     f = open("Makefile", 'a+')
-    f.writelines("include .**I DONT UNDERSTAND MAC PKG***/arduino-mk/Arduino.mk\r\n")
+    f.writelines("include ./Applications/Arduino.app/Contents/Resources/Java/arduino-mk/Arduino.mk\r\n")
     f.writelines("BOARD = {0}\r\n".format(board))
     f.close() 
     try:
@@ -33,3 +32,8 @@ class Maker():
 maker = Maker()
 maker.create_make()
 maker.write_make()
+
+''' i need a way to set these paths in bash, i think
+ARDUINO_DIR   = /Applications/Arduino.app/Contents/Resources/Java
+ARDMK_DIR     = /usr/local
+'''
