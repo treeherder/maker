@@ -8,7 +8,7 @@ class Maker():
   def create_make(self):
   	call(["touch", "Makefile"])
  	f = open("Makefile", 'a+')
- 	f.write   	
+ 	f.write("include .**I DONT UNDERSTAND MAC PKG***/arduino-mk/Arduino.mk")	
   def write_make(self):
    	f.write("{0}".format(self.lib))
   	f.close()
