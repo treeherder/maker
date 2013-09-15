@@ -29,7 +29,7 @@ class Maker():
 maker = Maker()
 maker.write_make()
 
-''' i need a way to set these paths in bash, i think
+''' i need a way to set these paths in OSX, i think
 ARDUINO_DIR   = /Applications/Arduino.app/Contents/Resources/Java
 ARDMK_DIR     = /usr/local
 '''
