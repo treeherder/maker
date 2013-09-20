@@ -9,6 +9,7 @@ ard_mk    = "/usr/local"   #arduino-mk directory
 parser = argparse.ArgumentParser(description='generate a Makefile')
 parser.add_argument('--board', dest='board')
 parser.add_argument('--port', dest='monitor_port')
+parse.add_argument('--dir', dest='ard_dir')
 parser.add_argument('--libs', nargs = '*', dest='libs')
 
 args = parser.parse_args()
