@@ -4,12 +4,12 @@ import argparse
 includes = []
 # needs platform detection, and version checking 
 ard_dir   = "/usr/share/arduino" #where to find the stuff it needs
-ard_mk    = "/usr/local"   #arduino-mk directory
-tools_dir = "/usr"
+ard_mk    = "/usr/share"   #arduino-mk directory
+tool_dir = "/usr"
 parser = argparse.ArgumentParser(description='generate a Makefile')
 parser.add_argument('--board', dest='board')
 parser.add_argument('--port', dest='monitor_port')
-parse.add_argument('--dir', dest='ard_dir')
+parser.add_argument('--dir', dest='ard_dir')
 parser.add_argument('--libs', nargs = '*', dest='libs')
 
 args = parser.parse_args()
@@ -28,8 +28,8 @@ def write_make():
   f.writelines("ARDUINO_LIBS =")
   for include in includes:
     f.writelines(" {0}".format(include))
-  f.writelines("\r\nMONITOR_PORT = {0}".format(monitor_port))
-  f.writelines("include /usr/local/arduino/Arduino.mk\r\n")
+  f.writelines("\r\nARDUINO_PORT = {0}".format(monitor_port))
+  f.writelines("\r\ninclude /usr/share/arduino/Arduino.mk\r\n")
 
   f.close()
    
